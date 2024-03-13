@@ -1,0 +1,144 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum NavbarItemType {
+  link
+  dropdown
+}
+
+enum LinkType {
+  link
+}
+
+
+model NavbarItem {
+  id         String         @id @default(uuid())
+  name       String
+  link       String?
+  type       NavbarItemType
+  dropdown   DropdownLink?  @relation(fields: [dropdownId], references: [id])
+  dropdownId String?
+
+  @@map("navbar_items")
+}
+
+model DropdownLink {
+  id         String       @id @default(uuid())
+  name       String
+  link       String
+  type       LinkType
+  NavbarItem NavbarItem[]
+
+  @@map("dropdown_links")
+}
+model User {
+  id            String   @id @default(uuid()) 
+  name          String
+  email         String   @unique
+  password      String   
+  refreshToken  String?
+  role          UserRole @default(NONE)
+  sessions      Session[]
+
+  @@map("users")
+}
+
+enum UserRole {
+  ADMIN
+  NONE
+}
+
+model Session {
+  id         String   @id @default(uuid()) 
+  sessionID  String   @unique
+  userId     String   
+  user       User     @relation(fields: [userId], references: [id])
+  expires    DateTime
+
+  @@map("sessions")
+}
+
+enum servicesType {
+  loan
+  saving
+  insurance
+  others
+}
+
+model Service {
+  id          String      @id @default(uuid()) 
+  title       String
+  description String
+  cover       String      
+  disable     Boolean     @default(false)
+  type        servicesType
+
+  @@map("services")
+}
+model Notice {
+  id       String  @id @default(uuid())
+  title    String
+  message  String  @db.Text  
+  disable  Boolean @default(false)
+
+  @@map("notices")
+}
+
+model About {
+  id       String  @id @default(uuid()) 
+  title    String
+  desc     String  @db.Text  
+  image    String  
+  disable  Boolean @default(false)
+
+  @@map("abouts")
+}
+
+enum DocumentsTypes {
+  pdf
+  txt
+  png
+  jpeg
+  jpg
+
+}
+
+model UploadDocuments {
+  id    String @id @default(uuid())
+  file  String
+  type  DocumentsTypes
+}
+
+
+model Footer {
+  id        String   @id @default(uuid()) 
+  companyName String
+  logo      String   
+  address   String
+  phoneNos  Json     
+  urls      URL[]    
+
+  @@map("footers")
+}
+
+model URL {
+  id        String   @id @default(uuid()) 
+  name      String
+  path      String
+  footerId  String?  
+  footer    Footer?  @relation(fields: [footerId], references: [id])
+
+  @@map("urls")
+}
