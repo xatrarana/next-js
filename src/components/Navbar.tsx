@@ -101,7 +101,7 @@ export default function Example() {
                             className={`${
                               item.current
                                 ? "text-yellow-200"
-                                : "text-base-100 hover:text-yellow-200"
+                                : "text-gray-100 hover:text-yellow-200"
                             } rounded-md px-3 py-2 text-md font-semibold no-underline hover:underline flex items-center gap-x-1`}
                             aria-current={item.current ? "page" : undefined}
                           >
@@ -112,7 +112,7 @@ export default function Example() {
                             className={`${
                               item.current
                                 ? "text-yellow-200"
-                                : "text-base-100 hover:text-yellow-200"
+                                : "text-gray-100 hover:text-yellow-200"
                             } rounded-md px-3 py-2 text-md font-semibold cursor-pointer flex items-center gap-x-1`}
                             aria-current={item.current ? "page" : undefined}
                           >

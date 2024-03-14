@@ -27,9 +27,11 @@ export default function SiteLayout({
       >
         <NavBar/>
         <Toaster/>
-        {
+       <main>
+       {
           children
         }
+       </main>
         <Footer/>
       </body>
     </html>

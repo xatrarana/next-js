@@ -7,6 +7,13 @@ import { Adapter } from "next-auth/adapters";
 import { compare } from "bcrypt";
 import NextAuth from "next-auth/next";
 
+const user = {
+    id: 'sffdsfsfsfsffwer4545',
+    name:"Chhatra Rana",
+    email: "chhatraclas@gmail.com",
+    password: "password",
+    role: 'admin'
+}
 const ADAPTER = PrismaAdapter(prisma);
 
 export const authOptions: NextAuthOptions = {
@@ -27,7 +34,6 @@ export const authOptions: NextAuthOptions = {
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials,_) {
-                console.log(credentials)
                 if(!credentials?.email || !credentials?.password){
                     return null
                 }
@@ -36,6 +42,7 @@ export const authOptions: NextAuthOptions = {
                         email: credentials.email
                     }
                 })
+                
 
                 if(!user){
                     return null
@@ -47,6 +54,8 @@ export const authOptions: NextAuthOptions = {
                     return null
                 }
 
+                
+                
                 return {
                     id: String(user.id),
                     email: user.email,

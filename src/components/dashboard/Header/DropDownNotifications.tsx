@@ -1,10 +1,10 @@
+'use client'
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 const DropdownNotification = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [notifying, setNotifying] = useState(true);
-
   const trigger = useRef<any>(null);
   const dropdown = useRef<any>(null);
 
@@ -86,7 +86,7 @@ const DropdownNotification = () => {
               href="#"
             >
               <p className="text-sm">
-                Hello I'm chhatra rana
+                Hello I&aposm chhatra rana
               </p>
 
               <p className="text-xs">13 March, 2024</p>

@@ -70,20 +70,15 @@ model Session {
   @@map("sessions")
 }
 
-enum servicesType {
-  loan
-  saving
-  insurance
-  others
-}
+
 
 model Service {
   id          String      @id @default(uuid()) 
   title       String
   description String
   cover       String      
-  disable     Boolean     @default(false)
-  type        servicesType
+  disable     Boolean?     @default(false)
+  type        String
 
   @@map("services")
 }
@@ -100,8 +95,7 @@ model About {
   id       String  @id @default(uuid()) 
   title    String
   desc     String  @db.Text  
-  image    String  
-  disable  Boolean @default(false)
+  
 
   @@map("abouts")
 }
@@ -141,4 +135,32 @@ model URL {
   footer    Footer?  @relation(fields: [footerId], references: [id])
 
   @@map("urls")
+}
+
+model NavContent {
+  id              Int             @id @default(autoincrement())
+  logoImage       String
+  companyMotto    String
+  companyName     String
+  email           String
+  contactNumbers  Json
+  emails          Json
+  socialLinks     SocialLinks[]
+}
+
+// Model for storing social media links
+model SocialLinks {
+  id            Int       @id @default(autoincrement())
+  facebook      String?
+  youtube       String?
+  twitter       String?
+  whatsApp      String?
+  navContent    NavContent? @relation(fields: [navContentId], references: [id])
+  navContentId  Int?
+}
+
+// Model for storing contact numbers
+model ContactNumber {
+  id        Int      @id @default(autoincrement())
+  number    String
 }

@@ -12,7 +12,7 @@ export function CalendarContainer() {
       mode="single"
       selected={date}
       onSelect={setDate}
-      className="rounded-md border bg-gray-100 -z-10"
+      className="rounded-md border -z-5"
     />
   )
 }

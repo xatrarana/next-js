@@ -12,7 +12,7 @@ export  async function GET(req:NextRequest,res:NextResponse){
 export async function POST(req:Request,res:Response){
     try {
     const {fname,lname,email,password} = await req.json()
-    const name = fname + lname
+    const name = fname + " "+lname
     const existingUser = await db.user.findFirst({
         where: {
             email
@@ -27,6 +27,7 @@ export async function POST(req:Request,res:Response){
             name,
             email,
             password: hashPass,
+            role: 'ADMIN'
         }
     })
     const {password: newPassword, ...rest} = newUser

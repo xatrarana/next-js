@@ -1,11 +1,10 @@
 "use client";
-
 import React, { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import SidebarLinkGroup from "./SidebarLinkGroup";
-import { ChatBubbleBottomCenterIcon, ClipboardDocumentIcon } from "@heroicons/react/16/solid";
-import { SessionProvider } from "next-auth/react";
+import { ArrowLeftStartOnRectangleIcon, ChatBubbleBottomCenterIcon, ClipboardDocumentIcon } from "@heroicons/react/16/solid";
+import { signOut } from "next-auth/react";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -14,7 +13,6 @@ interface SidebarProps {
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const pathname = usePathname();
-
   const trigger = useRef<any>(null);
   const sidebar = useRef<any>(null);
 
@@ -349,9 +347,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
               <li>
                 <Link
-                  href="/messages"
+                  href="/admin/page/services"
                   className={`group relative no-underline flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-white duration-300 ease-in-out hover:bg-green-500  ${
-                    pathname.includes("messages") && "bg-graydark dark:bg-meta-4"
+                    pathname.includes("/admin/pages/services") && "bg-green-500"
                   }`}
                 >
                   <svg
@@ -379,7 +377,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       </clipPath>
                     </defs>
                   </svg>
-                  Footer
+                  Services
                 </Link>
               </li>
               {/* <!-- Menu Item Messages --> */}
@@ -414,6 +412,18 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <ClipboardDocumentIcon className="h-5 w-5" />
                   Notices
                 </Link>
+              </li>
+            <li className=" cursor-pointer" onClick={() => signOut({
+              redirect: true,
+              callbackUrl: '/'
+            })}>
+                <span
+                  className={`group relative no-underline flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-white duration-300 ease-in-out hover:bg-green-500 `}
+                  
+                >
+                <ArrowLeftStartOnRectangleIcon className="h-5 w-5" />
+                  Logout
+                </span>
               </li>
             </ul>
           </div>

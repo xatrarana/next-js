@@ -2,9 +2,6 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Session } from "next-auth";
-import UserDetails from "./UserDetails";
-import { useSession } from "next-auth/react";
 
 
 const DropdownUser= () => {
@@ -39,7 +36,7 @@ const DropdownUser= () => {
 
   return (
     <div className="relative">
-      {/* <span
+      <span
         ref={trigger}
         onClick={() => setDropdownOpen(!dropdownOpen)}
         className="flex no-underline items-center gap-4"
@@ -79,7 +76,7 @@ const DropdownUser= () => {
             fill="#22c55e"
           />
         </svg>
-      </span> */}
+      </span>
 
       {/* <!-- Dropdown Start --> */}
       <div

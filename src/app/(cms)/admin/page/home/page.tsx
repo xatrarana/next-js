@@ -1,9 +1,11 @@
+import UploadForm from '@/components/dashboard/home/FileUpload'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <UploadForm/>
   )
 }
 
 export default page
+

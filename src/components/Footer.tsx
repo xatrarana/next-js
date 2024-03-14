@@ -67,8 +67,8 @@ const socialMediaLinks = [
 const date = new Date()
 const Footer = () => {
   return (
-  <footer className="flex flex-col bg-green-500">
-  <div className='footer w-full max-w-7xl mx-auto p-3  md:p-5 text-lg'>
+  <footer className="flex  flex-col bg-green-500">
+  <div className='footer w-full max-w-7xl mx-auto p-3 md:p-5 text-lg'>
     <div className=''>
       <div className=''>
         <Image className='rounded-full' width={100} height={100} src={logo} alt='logo' />

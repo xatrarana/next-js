@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
 import "../../styles/globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import DefaultLayout from "@/layout/DashBoardLayout";
-import { Session } from "next-auth";
-import { SessionProvider } from "next-auth/react";
-
 
 export const metadata: Metadata = {
   title: "Dashboard App",
@@ -14,10 +10,8 @@ export const metadata: Metadata = {
 
 export default function SiteLayout({
   children,
-  session,
 }: Readonly<{
   children: React.ReactNode;
-  session: Session | null;
 }>) {
   return (
     <html lang="en">

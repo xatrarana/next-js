@@ -1,12 +1,9 @@
-import Link from "next/link";
+'use client'
 import DropdownNotification from "./DropDownNotifications";
 import DropdownUser from "./DropDownUsers";
-import Image from "next/image";
-import { Bars3BottomRightIcon, Bars3CenterLeftIcon, BriefcaseIcon, MagnifyingGlassIcon } from "@heroicons/react/16/solid";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import {  Bars3CenterLeftIcon, MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 
-const Header = async (props: {
+const Header =  (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
@@ -21,7 +18,7 @@ const Header = async (props: {
               e.stopPropagation();
               props.setSidebarOpen(!props.sidebarOpen);
             }}
-            className="z-99999 block rounded-md border border-stroke bg-green-500 p-1.5  shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden"
+            className="z-50 block rounded-md border border-stroke bg-green-500 p-1.5  shadow-sm dark:border-strokedark dark:bg-boxdark lg:hidden"
           >
            
             <Bars3CenterLeftIcon className="block h-7 w-7 text-white" />

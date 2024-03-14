@@ -6,12 +6,12 @@ import ServicesWrapper from "@/components/sites/ServicesWrapper";
 
 export default function Home() {
   return (
-   <main>
+   <>
     <HomePage/>
     <AboutSection/>
     <ServicesWrapper/>
     <OrganizationProfile/>
     <ManagementTeam/>
-   </main>
+   </>
   );
 }
